@@ -21,3 +21,16 @@
 {% endblock %}
 
 
+# Python e Pandas - Filtros Multiplos 
+
+<div class="row mt-5 justify-content-around">
+    <select class="col-5 form-control" name="country" id="country" required>
+        <option value="">Selecione o País</option>
+        {% for countries in countryFilter %}
+            <option value="{{countries}}">{{countries}}</option>
+        {% endfor %}
+    </select>
+    <input class="col-4 form-control" name="title" id="title" type="text">
+    <button class="col-2 btn btn-primary">Pesquisar</button>
+</div>
+
