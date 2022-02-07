@@ -86,3 +86,29 @@ def countryFilter(request):
         .to_html(index=False,classes=['table','table-striped','mt-5'])
         return JsonResponse({'data':data['dados']})
     
+# Botões de Ações - Pandas
+# Na views vamos selecionar as séries que queremos exibir e vamos criar a coluna que receberá os botões de ação:
+
+def home(request):
+    #data['dados']=df[(df['release_year']>2009) & (df['country']=='Brazil')]\
+    counter = 0
+    list = []
+    rows = len(df.index)
+
+    while(counter < rows):
+        list.append("Detalhes")
+        counter+=1
+    df['links']=list
+
+    data['dados']=df[['title','country','links']]\
+        .dropna()\
+        .head(20)\
+        .to_html(render_links=True, escape=False,classes=['table','table-striped','mt-5'])
+    data['countryFilter']=df['country'].sort_values().unique()
+    return render(request,'index.html',data)
+
+def detalhes(request,pk):
+    data['pk']=pk
+    data['dados']=df.iloc[pk].values
+    return render(request, 'detalhes.html', data)
+
