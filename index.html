@@ -1,0 +1,10 @@
+index vai receber os dados visuais da nossa aplicação:
+
+{% extends 'main.html' %}
+{% block content %}
+
+    {% autoescape off %}
+        {{dados}}
+    {% endautoescape %}
+
+{% endblock %}
