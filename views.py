@@ -1,5 +1,6 @@
 # No arquivo views implementamos a lógica da aplicação, inclusive usando o Pandas e o Numpy.
 # Vamos testar o uso dos métodos do Pandas para manipular nossos dados:
+# Agora já entrando no app vamos até o arquivo views setar a função home:
 
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -7,6 +8,10 @@ import numpy as np
 import pandas as pd
 
 # Create your views here.
+
+def home(request):
+    return HttpResponse('Hello World')
+
 def replaceCountries(x):
     if(x=='Brazil'):
         return x.replace('Brazil','Brasil')
