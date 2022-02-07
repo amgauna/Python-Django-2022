@@ -74,4 +74,15 @@ def countryFilter(request):
         .to_html(index=False,classes=['table','table-striped','mt-5'])
         return JsonResponse({'data':data['dados']})
     
+ # Vamos fazer a filtragem através do Pandas na nossa views:
+
+def countryFilter(request):
+    if request.body:
+        field = json.loads(request.body.decode('utf-8'))
+        search = field['country']
+        title = field['title']
+        df2=df.dropna()
+        data['dados']=df2[(df2['country'].str.contains(search))&(df2['title'].str.contains(title,flags=re.IGNORECASE))]\
+        .to_html(index=False,classes=['table','table-striped','mt-5'])
+        return JsonResponse({'data':data['dados']})
     
