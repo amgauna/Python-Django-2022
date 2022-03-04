@@ -1,2 +1,3 @@
-# Python-Django-DataScience
+# Python / Django
+
 Python Django DataScience
